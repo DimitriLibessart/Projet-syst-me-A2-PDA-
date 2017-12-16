@@ -46,9 +46,12 @@ let "nbrDigit=hourDigit*60+minuteDigit"
 ###
 #display the number of line
 ###
-number_line=$(cat -b access.log |awk '{print $1;}'|tail -n 1)
+#number_line=$(cat -b access.log |awk '{print $1;}'|tail -n 1)
+number_line=$(cat access.log|grep $(date  +"%d/$month/%Y")|wc -l)
 
 
+
+############################################################remove ?
 wanted_line=12;
 
 ###
@@ -56,7 +59,7 @@ wanted_line=12;
 ###
 
 specific=$(cat -b access.log |head -n $wanted_line|tail -n 1)
-
+############################################################
 
 
 
@@ -64,7 +67,7 @@ specific=$(cat -b access.log |head -n $wanted_line|tail -n 1)
 
 
 ligne=1
-number_line=$(echo $digit|wc -l)
+
 while [ $ligne -le $number_line ]
 do
 
