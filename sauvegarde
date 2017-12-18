@@ -1,0 +1,29 @@
+#!/bin/bash
+
+d=`date +%Y%m%d-%H:%M`
+cd /media/usb/backup/
+
+delete_old()
+{
+if [ `ls | wc -l` -gt 7 ]; then
+
+
+rm $(ls | head -n 1)
+
+fi
+}
+
+save_conf_html()
+{
+if [ -e /var/www/html ]; then
+
+tar -cvzf /media/usb/backup/backup$d".tar.gz" /var/www/html
+fi
+
+}
+save_conf_html
+delete_old
+
+crontab -e
+0 3 * * 1 /home/pi/sauvegarde2.sh
+
