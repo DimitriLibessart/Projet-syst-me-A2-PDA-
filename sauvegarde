@@ -1,8 +1,9 @@
 #!/bin/bash
 
-d=`date +%Y%m%d-%H:%M`
-cd /media/usb/backup/
+d=`date +%Y%m%d-%H:%M` #variable with my date formate#
+cd /media/usb/backup/ #way of the hardisk#
 
+#Function which allows to delete the oldest file which is in the first line#
 delete_old()
 {
 if [ `ls | wc -l` -gt 7 ]; then
@@ -12,7 +13,7 @@ rm $(ls | head -n 1)
 
 fi
 }
-
+#Function which allows to protect it .tar in my hard disk#
 save_conf_html()
 {
 if [ -e /var/www/html ]; then
