@@ -1,4 +1,4 @@
-0 0 1 * * /home/pi/script/sauvegarde.sh
+0 0 1 * * /home/pi/script/sauvegarde2.sh
 
 #Back up quite files apache2 in my hard disk#
 #!/bin/bash  
