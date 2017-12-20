@@ -26,5 +26,5 @@ save_conf_html
 delete_old
 
 crontab -e
-0 3 * * 1 /home/pi/sauvegarde2.sh
+0 3 * * 1 /home/pi/sauvegarde.sh
 
