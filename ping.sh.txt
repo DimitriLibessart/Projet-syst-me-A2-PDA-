@@ -1,0 +1,14 @@
+#!/bin/bash
+
+GAWK="/usr/bin/gawk"
+result=`curl -o /dev/null -s -w %{time_connect}:%{time_starttransfer}:%{time_total} www.carnofluxe.local`
+
+echo -n "Response Time of HTTP server is " > EtatHTTP.csv
+echo $(ping 192.168.10.8 -c 2|grep '%' |sed -r '[*0-9]ms') >> EtatHTTP.csv 
+
+echo -n "Response Time of Carnofluxe.fr is >> EtatHTTP.csv
+echo $(ping www.carnofluxe.fr -c 2|grep '%' |sed -r '[*0-9]ms') >> EtatHTTP.csv
+
+echo -n " Access Time to Carnofluxe.local is " >> EtatHTTP.csv
+echo $result | gawk -F: '{ print $3}' >> EtatHTTP.csv
+echo "ms" >> EtatHTTP.csv
